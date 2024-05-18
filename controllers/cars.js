@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Car = require('../models/car')
 
-// get all cars: '/'
+// GET all cars: '/'
 router.get('/', async (req, res)=>{
     try {
         // throw new Error('no cars')
@@ -13,7 +13,7 @@ router.get('/', async (req, res)=>{
     }
 })
 
-// post a car: '/'
+// POST a car: '/'
 router.post('/', async (req, res)=>{
     try{
         const car = Car.create(req.body)
@@ -23,7 +23,7 @@ router.post('/', async (req, res)=>{
     }
 })
 
-// get a single car: '/:carId'
+// GET a car: '/:carId'
 router.get('/:carId', async (req, res)=>{
     try{
         const car = await Car.findById(req.params.carId)
@@ -41,7 +41,7 @@ router.get('/:carId', async (req, res)=>{
     }
 })
 
-// put a single car edit: '/:carId'
+// PUT an updated car: '/:carId'
 router.put('/:carId', async (req, res)=>{
     try{
         const car = await Car.findByIdAndUpdate(req.params.carId, req.body, {new: true})
@@ -59,7 +59,7 @@ router.put('/:carId', async (req, res)=>{
     }    
 })
 
-// delete a single car: '/:carId'
+// DELETE a car: '/:carId'
 router.delete('/:carId', async (req, res)=>{
     try{
         const car = await Car.findByIdAndDelete(req.params.carId)

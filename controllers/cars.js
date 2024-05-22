@@ -5,7 +5,6 @@ const Car = require('../models/car')
 // GET all cars: '/'
 router.get('/', async (req, res)=>{
     try {
-        // throw new Error('no cars')
         const allCars = await Car.find()
         res.status(200).json(allCars)
     } catch (err){
